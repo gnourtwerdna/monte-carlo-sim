@@ -8,10 +8,12 @@
 This project implements a Monte Carlo simulation engine in Python to analyze and visualize the potential risk and return profiles of multi-sector stock portfolios. It calculates key performance and risk metrics over different time periods (1, 3, and 5 years) and presents the results through an interactive web dashboard built with Streamlit and Plotly.
 
 ## Setup
-Install the required Python packages listed in `requirements.txt`
-    ```bash
-    pip install -r requirements.txt
-    ```
+
+Install the required Python packages listed in `requirements.txt`:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Usage
 
