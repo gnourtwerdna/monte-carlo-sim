@@ -1,7 +1,6 @@
 # Monte Carlo Simulation for Multi-Sector Portfolio Risk and Return Analysis
 
 **Authors:** Andrew Truong, Terry Tu
-**(ISYE 6644 Project)**
 
 ## Description
 
