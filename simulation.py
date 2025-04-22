@@ -56,21 +56,21 @@ def run_monte_carlo_portfolio_simulation(price_data, weights, num_simulations, n
     if not np.isclose(np.sum(weights), 1.0):
         weights = weights / np.sum(weights)
 
-    # Calculate Log Returns
+    # Calculate log returns
     log_returns = np.log(price_data / price_data.shift(1)).dropna()
 
-    # Calculate Mean Returns Vector and Covariance Matrix
+    # Calculate mean returns vector and covariance matrix
     mean_returns = log_returns.mean().values
     cov_matrix = log_returns.cov()
 
-    # Get Last Known Prices
+    # Get last known prices
     last_prices = price_data.iloc[-1].values
 
     # Initialize arrays
     simulated_asset_prices = np.zeros((num_days, num_simulations, len(weights)))
     simulated_portfolio_values = np.zeros((num_days, num_simulations))
 
-    # Run Simulation Loop
+    # Run simulation loop
     for i in range(num_simulations):
         current_prices = last_prices.copy()
         initial_asset_values = initial_investment * weights
@@ -105,8 +105,8 @@ def plot_simulation_results(results_df, initial_investment, title_suffix="", num
     num_days = results_df.shape[0]
     final_values = results_df.iloc[-1] # Portfolio values on the last simulated day
 
-    # Plot 1: Simulation Paths
-    plt.style.use('seaborn-v0_8-darkgrid') # Use a nice style
+    # Plot 1: Simulation paths
+    plt.style.use('seaborn-v0_8-darkgrid')
     plt.figure(figsize=(12, 7))
 
     # Plot a subset of paths to avoid visual clutter and improve performance
@@ -121,18 +121,18 @@ def plot_simulation_results(results_df, initial_investment, title_suffix="", num
     plt.title(f'Monte Carlo Portfolio Simulation Paths {title_suffix}\n({paths_to_plot} of {num_simulations} Shown over {num_days} days)')
     plt.legend(loc='upper left')
     plt.grid(True, alpha=0.4)
-    plt.tight_layout() # Adjust layout to prevent labels overlapping
+    plt.tight_layout()
     plt.show()
 
-    # Plot 2: Distribution of Final Values
+    # Plot 2: Distribution of final values
     plt.figure(figsize=(10, 6))
-    plt.hist(final_values, bins=50, edgecolor='black', alpha=0.8, density=True) # Use density=True if comparing distributions
+    plt.hist(final_values, bins=50, edgecolor='black', alpha=0.8, density=True)
 
     # Add kde line
     final_values.plot(kind='kde', color='blue', lw=1.5, ax=plt.gca(), label='Density Estimate (KDE)')
 
     plt.xlabel(f'Final Portfolio Value ($) after {num_days} days')
-    plt.ylabel('Probability Density') # Or 'Frequency' if density=False
+    plt.ylabel('Probability Density')
     plt.title(f'Distribution of Final Portfolio Values {title_suffix}')
 
     # Add lines for mean, median, quantiles
@@ -153,6 +153,7 @@ def plot_simulation_results(results_df, initial_investment, title_suffix="", num
 
 
 if __name__ == "__main__":
+    # Set default folder as consumer cyclical
     target_folder = "stock_data/Consumer_Cyclical"
 
     # Simulation parameters
