@@ -4,5 +4,4 @@ numpy
 matplotlib
 scipy
 streamlit
-altair
 plotly
